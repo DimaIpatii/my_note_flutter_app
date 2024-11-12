@@ -5,13 +5,18 @@ class PasswordFieldView extends StatefulWidget {
   final String hintText;
   final bool isRequired;
   final AutovalidateMode? autovalidateMode;
+  final Function(String value, bool isValid)? onChanged;
+  final Function(String value, bool isValid)? onSubmitted;
 
-  const PasswordFieldView(
-      {super.key,
-      required this.passwordController,
-      this.hintText = "Password",
-      this.isRequired = false,
-      this.autovalidateMode = AutovalidateMode.onUnfocus});
+  const PasswordFieldView({
+    super.key,
+    required this.passwordController,
+    this.hintText = "Password",
+    this.isRequired = false,
+    this.autovalidateMode = AutovalidateMode.onUnfocus,
+    this.onChanged,
+    this.onSubmitted,
+  });
 
   @override
   State<PasswordFieldView> createState() => _PasswordFieldView();
@@ -57,6 +62,16 @@ class _PasswordFieldView extends State<PasswordFieldView> {
             icon: Icon(_obscureText ? Icons.visibility : Icons.visibility_off),
           )),
       validator: _passwordValidator,
+      onChanged: (value) {
+        if (widget.onChanged != null) {
+          widget.onChanged!(value, _passwordValidator(value) == null);
+        }
+      },
+      onFieldSubmitted: (value) {
+        if (widget.onSubmitted != null) {
+          widget.onSubmitted!(value, _passwordValidator(value) == null);
+        }
+      },
     );
   }
 }

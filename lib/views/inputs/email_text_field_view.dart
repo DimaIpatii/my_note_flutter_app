@@ -5,8 +5,8 @@ class EmailTextFieldView extends StatelessWidget {
   final String hintText;
   final bool isRequired;
   final AutovalidateMode? autovalidateMode;
-  final Function(String)? onChanged;
-  final Function(String)? onSubmitted;
+  final Function(String value, bool isValid)? onChanged;
+  final Function(String value, bool isValid)? onSubmitted;
 
   const EmailTextFieldView({
     super.key,
@@ -41,8 +41,16 @@ class EmailTextFieldView extends StatelessWidget {
       keyboardType: TextInputType.emailAddress,
       autovalidateMode:
           (isRequired == true) ? autovalidateMode : AutovalidateMode.disabled,
-      onChanged: onChanged,
-      onFieldSubmitted: onSubmitted,
+      onChanged: (value) {
+        if (onChanged != null) {
+          onChanged!(value, _emailValidator(value) == null);
+        }
+      },
+      onFieldSubmitted: (value) {
+        if (onSubmitted != null) {
+          onSubmitted!(value, _emailValidator(value) == null);
+        }
+      },
       decoration: InputDecoration(
         hintText: hintText,
         hintStyle: TextStyle(
