@@ -1,4 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:my_note/model/manage_password_screen_option.dart';
+import 'package:my_note/screens/manage_password_screen_view.dart';
+import 'package:my_note/views/inputs/password_field_view.dart';
 import 'screens/forgot_password_scrren_view.dart';
 
 void main() {
@@ -17,7 +22,9 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueAccent),
         useMaterial3: true,
       ),
-      home: const ForgotPasswordFormScreenView(),
+      home: const ManagePasswordScreenView(
+        type: ManagePasswordScreenOption.update,
+      ),
     );
   }
 }

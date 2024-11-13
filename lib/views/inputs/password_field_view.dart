@@ -5,6 +5,7 @@ class PasswordFieldView extends StatefulWidget {
   final String hintText;
   final bool isRequired;
   final AutovalidateMode? autovalidateMode;
+  final Function(String? value)? validator;
   final Function(String value, bool isValid)? onChanged;
   final Function(String value, bool isValid)? onSubmitted;
 
@@ -14,6 +15,7 @@ class PasswordFieldView extends StatefulWidget {
     this.hintText = "Password",
     this.isRequired = false,
     this.autovalidateMode = AutovalidateMode.onUnfocus,
+    this.validator,
     this.onChanged,
     this.onSubmitted,
   });
@@ -26,6 +28,10 @@ class _PasswordFieldView extends State<PasswordFieldView> {
   bool _obscureText = true;
 
   String? _passwordValidator(String? value) {
+    if (widget.validator != null) {
+      return widget.validator!(value);
+    }
+
     if (widget.isRequired == false) {
       return null;
     }

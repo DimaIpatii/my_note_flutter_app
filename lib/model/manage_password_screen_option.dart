@@ -1,0 +1,1 @@
+enum ManagePasswordScreenOption { update, create }
