@@ -1,7 +1,9 @@
 import "package:flutter/material.dart";
+import "package:my_note/views/screen_scaffold_wrapper.dart";
 
 import "../model/manage_password_screen_option.dart";
 import "../views/forms/manage_password_form_view.dart";
+import "../views/titles/section_title_view.dart";
 
 class ManagePasswordScreenView extends StatelessWidget {
   final ManagePasswordScreenOption type;
@@ -10,31 +12,17 @@ class ManagePasswordScreenView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Center(
-          child: Column(
-            children: [
-              Text(
-                type == ManagePasswordScreenOption.create
-                    ? "Create new password"
-                    : "Update password",
-                //style: Theme.of(context).textTheme.headlineMedium,
-                style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                      color: Theme.of(context).colorScheme.primary,
-                    ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              ManagePasswordFormView(
-                type: type,
-              )
-            ],
-          ),
-        ),
+    return ScreenScaffoldWrapper(children: [
+      SectionTitleView(
+          text: type == ManagePasswordScreenOption.create
+              ? "Create new password"
+              : "Update password"),
+      const SizedBox(
+        height: 20,
       ),
-    );
+      ManagePasswordFormView(
+        type: type,
+      )
+    ]);
   }
 }

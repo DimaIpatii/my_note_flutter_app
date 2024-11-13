@@ -106,7 +106,7 @@ class _ManagePasswordFormView extends State<ManagePasswordFormView> {
           PasswordFieldView(
             passwordController: _oldPasswordController,
             isRequired: true,
-            hintText: "Old password",
+            labelText: "Old password",
             autovalidateMode: AutovalidateMode.onUserInteraction,
             validator: _oldPasswordValidator,
             onChanged: (value, isValid) {
@@ -119,7 +119,7 @@ class _ManagePasswordFormView extends State<ManagePasswordFormView> {
         PasswordFieldView(
           passwordController: _newPasswordController,
           isRequired: true,
-          hintText: "Password",
+          labelText: "Password",
           autovalidateMode: AutovalidateMode.onUserInteraction,
           validator: _newPasswordValidator,
           onChanged: (value, isValid) {
@@ -132,7 +132,7 @@ class _ManagePasswordFormView extends State<ManagePasswordFormView> {
         PasswordFieldView(
           passwordController: _newPasswordRepeatController,
           isRequired: true,
-          hintText: "Password repeat",
+          labelText: "Password repeat",
           autovalidateMode: AutovalidateMode.onUserInteraction,
           validator: _newPasswordRepeatValidator,
           onChanged: (value, isValid) {

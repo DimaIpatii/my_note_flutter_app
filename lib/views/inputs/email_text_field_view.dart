@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 
 class EmailTextFieldView extends StatelessWidget {
   final TextEditingController emailController;
-  final String hintText;
+  final String labelText;
   final bool isRequired;
   final AutovalidateMode? autovalidateMode;
   final Function(String value, bool isValid)? onChanged;
@@ -11,7 +11,7 @@ class EmailTextFieldView extends StatelessWidget {
   const EmailTextFieldView({
     super.key,
     required this.emailController,
-    this.hintText = "Email",
+    this.labelText = "Email",
     this.isRequired = false,
     this.autovalidateMode = AutovalidateMode.onUnfocus,
     this.onChanged,
@@ -52,8 +52,8 @@ class EmailTextFieldView extends StatelessWidget {
         }
       },
       decoration: InputDecoration(
-        hintText: hintText,
-        hintStyle: TextStyle(
+        labelText: labelText,
+        labelStyle: TextStyle(
           color: Theme.of(context).colorScheme.primary,
         ),
       ),

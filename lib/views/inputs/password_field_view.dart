@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 
 class PasswordFieldView extends StatefulWidget {
   final TextEditingController passwordController;
-  final String hintText;
+  final String labelText;
   final bool isRequired;
   final AutovalidateMode? autovalidateMode;
   final Function(String? value)? validator;
@@ -12,7 +12,7 @@ class PasswordFieldView extends StatefulWidget {
   const PasswordFieldView({
     super.key,
     required this.passwordController,
-    this.hintText = "Password",
+    this.labelText = "Password",
     this.isRequired = false,
     this.autovalidateMode = AutovalidateMode.onUnfocus,
     this.validator,
@@ -59,8 +59,8 @@ class _PasswordFieldView extends State<PasswordFieldView> {
           : AutovalidateMode.disabled,
       obscureText: _obscureText,
       decoration: InputDecoration(
-          hintText: widget.hintText,
-          hintStyle: TextStyle(
+          labelText: widget.labelText,
+          labelStyle: TextStyle(
             color: Theme.of(context).colorScheme.primary,
           ),
           suffixIcon: IconButton(

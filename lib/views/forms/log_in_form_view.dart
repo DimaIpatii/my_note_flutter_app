@@ -18,6 +18,13 @@ class _LogInFormView extends State<LogInFormView> {
   final TextEditingController _passwordController = TextEditingController();
 
   @override
+  void dispose() {
+    _emailController.clear();
+    _passwordController.clear();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Form(
       key: _formStateKey,
